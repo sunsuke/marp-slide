@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: sudo apt-get update & sudo apt-get install jq
+      - run: sudo chmod 775 ${{steps.config.outputs.DIR}}
       - run: |
           directory=$(cat config.json | jq -r .directory)
           output_format=$(cat config.json | jq -r .output_format)
